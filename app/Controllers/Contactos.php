@@ -42,4 +42,26 @@
 			//$ruta = base_url()+"/public/contactos";
             return redirect()->to(base_url()."/public/contactos");
         }
+		
+		public function editar($id){
+			$resultado = $this->dbcontactos->where('idcontacto',$id)->first();
+			$data = [
+				'titulo' => 'Contactos - Editar',
+				'datos' => $resultado
+			];
+			echo view('editar',$data);
+		}
+		
+		public function actualizar(){
+			$id = $this->request->getpost('idcontacto');
+			$valores = [
+				'nombre' => $this->request->getpost('nombre'),
+				'apellidos' => $this->request->getpost('apellidos'),
+				'dni' => $this->request->getpost('dni'),
+				'email' => $this->request->getpost('email'),
+				'celular' => $this->request->getpost('celular')
+			];
+			$this->dbcontactos->update($id, $valores);
+			return redirect()->to(base_url()."/public/contactos");
+		}
     }
