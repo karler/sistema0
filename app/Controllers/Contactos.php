@@ -64,4 +64,9 @@
 			$this->dbcontactos->update($id, $valores);
 			return redirect()->to(base_url()."/public/contactos");
 		}
+		
+		public function eliminar($id){
+			$this->dbcontactos->delete($id);
+			return redirect()->to(base_url()."/public/contactos");
+		}
     }

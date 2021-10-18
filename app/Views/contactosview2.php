@@ -17,6 +17,8 @@
             <th scope="col">DNI</th>
             <th scope="col">Email</th>
             <th scope="col">Celular</th>
+			<th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +31,10 @@
                     echo "<td>".$dat['dni']."</td>";
                     echo "<td>".$dat['email']."</td>";
                     echo "<td>".$dat['celular']."</td>";
+					$rutae = base_url()."/public/contactos/editar/".$dat['idcontacto'];
+					echo "<td><a href='$rutae'>Editar</a></td>";
+					$rutad = base_url()."/public/contactos/eliminar/".$dat['idcontacto'];
+					echo "<td><a href='$rutad'>Eliminar</a></td>";
                     echo "</tr>";
                 }
             ?>
